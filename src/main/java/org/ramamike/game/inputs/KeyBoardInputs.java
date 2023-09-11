@@ -5,6 +5,8 @@ import org.ramamike.game.main.GamePanel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import static org.ramamike.game.utils.Constants.Directions.*;
+
 public class KeyBoardInputs implements KeyListener {
 
     private GamePanel gamePanel;
@@ -20,23 +22,30 @@ public class KeyBoardInputs implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-
+        switch (keyEvent.getKeyCode()) {
+            case KeyEvent.VK_W:
+                gamePanel.setDirection(UP);
+                break;
+            case KeyEvent.VK_A:
+                gamePanel.setDirection(LEFT);
+                break;
+            case KeyEvent.VK_S:
+                gamePanel.setDirection(DOWN);
+                break;
+            case KeyEvent.VK_D:
+                gamePanel.setDirection(RIGHT);
+                break;
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         switch (keyEvent.getKeyCode()) {
             case KeyEvent.VK_W:
-                gamePanel.changeYDelta(-5);
-                break;
             case KeyEvent.VK_A:
-                gamePanel.changeXDelta(-5);
-                break;
             case KeyEvent.VK_S:
-                gamePanel.changeYDelta(5);
-                break;
             case KeyEvent.VK_D:
-                gamePanel.changeXDelta(5);
+                gamePanel.setMoving(false);
                 break;
         }
     }
