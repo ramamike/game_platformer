@@ -43,8 +43,8 @@ public class Game implements Runnable {
     }
 
     private void update() {
-        player.update();
         levelManager.update();
+        player.update();
     }
 
     public void render(Graphics g) {
