@@ -1,10 +1,9 @@
 package org.ramamike.game.entities;
 
-import javax.imageio.ImageIO;
+import org.ramamike.game.utils.LoadSafe;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 
 import static org.ramamike.game.utils.Constants.PlayerConstants.*;
 
@@ -41,9 +40,8 @@ public class Player extends Entity {
     }
 
     private void loadAnimation() {
-        InputStream inputStream = getClass().getResourceAsStream("/player_sprites.png");
-        try {
-            BufferedImage image = ImageIO.read(inputStream);
+
+            BufferedImage image = LoadSafe.getSpriteAtlas(LoadSafe.PLAYER_ATLAS);
             animation = new BufferedImage[9][6];
 
             for (int j = 0; j < animation.length; j++) {
@@ -51,15 +49,7 @@ public class Player extends Entity {
                     animation[j][i] = image.getSubimage(i * 64, j * 40, 64, 40);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+
 
     }
 

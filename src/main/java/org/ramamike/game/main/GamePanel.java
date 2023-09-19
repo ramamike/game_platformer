@@ -5,6 +5,10 @@ import org.ramamike.game.inputs.MouseInputs;
 
 import javax.swing.*;
 import java.awt.*;
+
+import static org.ramamike.game.main.Game.GAME_HEIGHT;
+import static org.ramamike.game.main.Game.GAME_WIDTH;
+
 public class GamePanel extends JPanel {
 
     private MouseInputs mouseInputs;
@@ -20,7 +24,7 @@ public class GamePanel extends JPanel {
 
 
     private void setPanelSize() {
-        Dimension size = new Dimension(1280, 800);
+        Dimension size = new Dimension(GAME_WIDTH, GAME_HEIGHT);
         setMinimumSize(size);
         setPreferredSize(size);
         setMaximumSize(size);
